@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoveSync - Your Perfect Love Companion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    <div class="stars" id="stars"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-heart"></i> LoveSync
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#calculator">Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#memories">Memories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#letter">Love Letter</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#countdown">Countdown</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#quiz">Quiz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#playlist">Playlist</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section reveal">
+        <div class="hero-blob" aria-hidden="true"></div>
+        <div class="hero-content">
+            <h1>Celebrate Your Love Story</h1>
+            <p>Your all-in-one romantic companion for creating beautiful memories together</p>
+            <button class="hero-btn" onclick="scrollToSection('calculator')">
+                Get Started <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section reveal">
+        <div class="container">
+            <h2 class="section-title">Amazing Features</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card shimmer" onclick="scrollToSection('calculator')">
+                        <div class="feature-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Love Calculator</h3>
+                        <p>Discover your compatibility percentage with your special someone</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card shimmer" onclick="scrollToSection('memories')">
+                        <div class="feature-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <h3>Memory Gallery</h3>
+                        <p>Store and cherish your beautiful moments together forever</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card shimmer" onclick="scrollToSection('letter')">
+                        <div class="feature-icon">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <h3>Love Letters</h3>
+                        <p>Generate romantic messages to express your deepest feelings</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card shimmer" onclick="scrollToSection('countdown')">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Date Countdown</h3>
+                        <p>Count down to your special anniversaries and milestones</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Calculator Section -->
+    <section id="calculator" class="calculator-section reveal">
+        <div class="container">
+            <h2 class="section-title">Love Calculator</h2>
+            <div class="calculator-container shimmer">
+                <form id="loveCalculatorForm">
+                    <div class="input-group-custom">
+                        <label>Your Name</label>
+                        <input type="text" id="name1" required placeholder="Enter your name">
+                    </div>
+                    <div class="input-group-custom">
+                        <label>Partner's Name</label>
+                        <input type="text" id="name2" required placeholder="Enter partner's name">
+                    </div>
+                    <button type="submit" class="calculate-btn">
+                        <i class="fas fa-heart me-2"></i> Calculate Love
+                    </button>
+                </form>
+
+                <div class="result-container" id="loveResult">
+                    <div class="hearts-animation">
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="result-percentage" id="percentage">0%</div>
+                    <div class="result-message" id="message"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory Gallery Section -->
+    <section id="memories" class="gallery-section reveal">
+        <div class="container">
+            <h2 class="section-title">Our Beautiful Memories</h2>
+            <div class="upload-zone shimmer" onclick="document.getElementById('fileInput').click()">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Upload Your Memories</h3>
+                <p>Click here to add photos of your special moments</p>
+                <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+            </div>
+
+            <div class="memory-grid" id="memoryGrid">
+                <!-- Memory cards will be added here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Letter Generator Section -->
+    <section id="letter" class="letter-section reveal">
+        <div class="container">
+            <h2 class="section-title">Love Letter Generator</h2>
+            <div class="letter-generator">
+                <div class="letter-output shimmer" id="letterOutput">
+                    <p>Click the button below to generate a heartfelt love letter...</p>
+                </div>
+                <div class="letter-controls">
+                    <button class="btn-custom btn-generate" onclick="generateLoveLetter()">
+                        <i class="fas fa-magic me-2"></i> Generate Letter
+                    </button>
+                    <button class="btn-custom btn-copy" onclick="copyLetter()">
+                        <i class="fas fa-copy me-2"></i> Copy Letter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer Section -->
+    <section id="countdown" class="countdown-section reveal">
+        <div class="container">
+            <h2 class="section-title">Special Date Countdown</h2>
+            <div class="countdown-container">
+                <div class="date-selector shimmer">
+                    <div class="text-center">
+                        <h4 class="mb-4">Set Your Special Date</h4>
+                        <select id="eventType" class="form-select">
+                            <option value="anniversary">Anniversary</option>
+                            <option value="birthday">Birthday</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="first-date">First Date</option>
+                            <option value="custom">Custom Event</option>
+                        </select>
+                        <input type="date" id="specialDate" class="form-control">
+                        <button class="btn-custom btn-generate mt-3" onclick="startCountdown()">
+                            Start Countdown
+                        </button>
+                    </div>
+                </div>
+
+                <div class="countdown-display" id="countdownDisplay" style="display: none;">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">0</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">0</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">0</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">0</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Couple Quiz Section -->
+    <section id="quiz" class="quiz-section reveal">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">How Well Do You Know Each Other?</h2>
+            <div class="quiz-container shimmer">
+                <div id="quizQuestions">
+                    <div class="quiz-question" data-question="1">
+                        <div class="question-text">1. What's your partner's favorite color?</div>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="10">
+                                <span>Blue</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="10">
+                                <span>Red</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="10">
+                                <span>Green</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="10">
+                                <span>Purple</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" data-question="2">
+                        <div class="question-text">2. What's your partner's dream vacation destination?</div>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="10">
+                                <span>Beach Paradise</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="10">
+                                <span>Mountain Retreat</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="10">
+                                <span>City Adventure</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="10">
+                                <span>Countryside Escape</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" data-question="3">
+                        <div class="question-text">3. How does your partner prefer to spend their weekend?</div>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="10">
+                                <span>Netflix & Chill</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="10">
+                                <span>Outdoor Activities</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="10">
+                                <span>Shopping & Dining</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="10">
+                                <span>Quality Time Together</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-custom btn-generate w-100 mt-4" onclick="submitQuiz()">
+                    Submit Quiz
+                </button>
+
+                <div class="quiz-score" id="quizScore">
+                    <h2 id="scoreValue">0%</h2>
+                    <p id="scoreMessage"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Playlist Section -->
+    <section id="playlist" class="playlist-section reveal">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Our Love Playlist</h2>
+            <div class="playlist-container">
+                <div class="add-song-form shimmer">
+                    <h4 class="mb-4" style="color: var(--secondary);">Add Your Favorite Song</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" id="songTitle" class="form-control" placeholder="Song Title">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="songArtist" class="form-control" placeholder="Artist">
+                        </div>
+                        <div class="col-12">
+                            <button class="btn-custom btn-generate w-100" onclick="addSong()">
+                                <i class="fas fa-plus-circle me-2"></i> Add to Playlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song-list" id="songList">
+                    <h4 class="mb-4" style="color: var(--secondary);">
+                        <i class="fas fa-music me-2"></i> Your Songs
+                    </h4>
+                    <!-- Songs will be added here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: white; padding: 40px 20px; text-align: center; color: var(--secondary);">
+        <div class="container">
+            <p style="font-size: 1.2rem; margin-bottom: 10px;">
+                <i class="fas fa-heart" style="color: var(--primary);"></i> 
+                Made with Love
+                <i class="fas fa-heart" style="color: var(--primary);"></i>
+            </p>
+            <p style="color: #999;">LoveSync © 2026 - Celebrate Every Moment Together</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
